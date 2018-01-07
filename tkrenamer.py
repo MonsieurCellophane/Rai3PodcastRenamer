@@ -152,12 +152,12 @@ def add_dir(folder):
             
     return stuff
     
-def worker():
+def worker(item):
+    print("Using item: %s"%item)
     #rc=re.compile(r'(?P<channel>[\w_]+)_del_(?P<day>\d\d)_(?P<month>\d\d)_(?P<year>\d\d\d\d)_+(?P<title>.*)$')
     rc=re.compile(r'^(?P<channel>.+)_del_(?P<day>\d\d)_(?P<month>\d\d)_(?P<year>\d\d\d\d)(_+)?(?P<title>.*)?$')
     #m=rc.match(name)
     #m.group('title')
-    item=str(askdirectory())
     if not os.path.isdir(item):
         logging.fatal("Not a directory:'%s'"%item)
         sys.exit(1)
@@ -196,7 +196,7 @@ def main():
     root = tk.Tk()
     myGUI(root)
     
-    t1 = threading.Thread(target=worker, args=[])
+    t1 = threading.Thread(target=worker, args=[str(askdirectory())])
     t1.start()
         
     root.mainloop()
