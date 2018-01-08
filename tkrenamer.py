@@ -168,7 +168,7 @@ def worker(item):
         #import ipdb; ipdb.set_trace()
         if suffix.lower() != '.mp3' :
             logging.warning("Skipping non mp3 (%s) :%s"%(suffix,p))
-            import ipdb; ipdb.set_trace()
+            #import ipdb; ipdb.set_trace()
             continue
         
         (dirname,basename)=os.path.split(top)
