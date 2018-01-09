@@ -1,4 +1,4 @@
 # Things to do
 
-  * Rebuild/re-release windows executable (checking file exist before rename)
+  * (DONE) Rebuild/re-release windows executable (Avoid crashing by checking target file exists before rename)
   
