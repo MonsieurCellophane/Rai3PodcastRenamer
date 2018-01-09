@@ -182,7 +182,10 @@ def worker(item):
         if channel and day and month and year:
             target=os.path.join(dirname,"%s_%s_%s_%s_%s%s"%(year,month,day,title,channel,suffix))
             logging.info("Renaming %s to %s"%(p,target))
-            os.rename(p,target)
+            if os.path.exists(target):
+                logging.info("Target %s exists, cannot rename"%(target,))
+            else:
+                os.rename(p,target)
         else:
             logging.warn("Skipping non conformant name %s"%basename)
     logging.info("*******************************************")
